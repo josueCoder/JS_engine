@@ -52,11 +52,74 @@ El ultimo en entrar es el primero en salir.
 
 **Garbage Collector**
  limpia la memoria de los datos no utilizados para no sobrecargarla y seguir trabajando sin problemas.
-
+ 
+ El algoritmo `Mark and Sweep`  limpia las variables que fueron renombradas 
 **Stack Overflow**
 Es el desborde de la pila de tareas 
 ![stack overflow](./app/img/stack-overflow.png)
 
+**Asincronia**
+
+JS: es sincrono ,sin ebargo puede asignar ciertas tareas que ejecute el navegador.
+
+![asincronia](./app/img/asincronia.png)
+
+```
+
+console.log('taco 1');
+console.log('taco 2');
+console.log('taco 3');
+setTimeout(()=>{
+    console.log('Torta')
+},500);  // tarea asignada al navegador
+console.log('taco 4');
+
+//reuslt
+taco 1
+taco 2
+taco 3
+taco 4
+Torta
 
 
-github:https://github.com/leonardomso/33-js-concepts#5--vs--vs-typeof
+//2 setTimeout en --->0
+console.log('taco 1');
+console.log('taco 2');
+console.log('taco 3');
+setTimeout(()=>{
+    console.log('Torta')
+},0);  // tarea asignada al navegador
+console.log('taco 4');
+
+//result
+taco 1
+taco 2
+taco 3
+taco 4
+Torta
+
+```
+**JavaScript Run Time**
+
+Conceptos
+
+**Memory Heap:** Espacio en donde se guardan las funciones y las variables
+
+**Call Stack:** Espacio en donde se estarán apilando todas las tareas de las cosas que debemos hacer en JS para darle interacción al navegador
+
+**Web API:** APIs propias del navegador
+
+- ayuden a manipular el dom
+- ayuda a manipular el tiempo de respuesta de algunas funciones
+Que no ayudan a generar peticiones
+Funciones que el navegador ofrece: https://developer.mozilla.org/en-US/docs/Web/API
+
+**Callback Queue:** Bandeja de espera (espera a que el Call Stack este vacío).
+
+**Event Loop:** Observador
+
+**Funcionamiento**
+
+JavaScript delega las tareas pertenecientes del navegador al navegar para continuar ejecutando las funciones que le son propias. En paralelo el navegador comienza a trabajar con esa función y al terminar la colocara en el Callback Queue.
+
+Luego el Event Loop lo que hace es preguntar al Call Stack si termino con sus tareas y esta vació. En caso de que el Call Stack este ocupado con una tarea le dice “no”. En caso de haber terminado con sus tareas, el Event Loop mueve el Fn1 del Callback Queue al Call Stack.
