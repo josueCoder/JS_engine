@@ -50,4 +50,13 @@ El ultimo en entrar es el primero en salir.
 
 [Video:Diego de granda](https://platzi.com/clases/1798-javascript-navegador/25685-call-stack/)
 
+**Garbage Collector**
+ limpia la memoria de los datos no utilizados para no sobrecargarla y seguir trabajando sin problemas.
+
+**Stack Overflow**
+Es el desborde de la pila de tareas 
+![stack overflow](./app/img/stack-overflow.png)
+
+
+
 github:https://github.com/leonardomso/33-js-concepts#5--vs--vs-typeof
